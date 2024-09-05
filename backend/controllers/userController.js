@@ -69,10 +69,13 @@ export const Login = async(req,res)=>{
             success:false
         })
     }
+
+     //setup for cookie jsonwebtoken
      const tokenData={
         userId:user._id
      }
      const token = await jwt.sign(tokenData,process.env.JWT_SECRET_KEY, {expiresIn:'1d'})
+
      return res.status(200).cookie("token",token, {maxAge:1*24*60*60*1000, httpOnly:true, sameSite:'strict'}).json({
         _id:user._id,
         username:user.username,
@@ -83,4 +86,28 @@ export const Login = async(req,res)=>{
   } catch (error) {
     console.log(error)
   }
+}
+
+export const Logout =(req,res)=>{
+try {
+     return res.status(200).cookie("token", "", {maxAge:0}).json({
+        message:"User Logged out successfully"
+     })
+} catch (error) {
+    console.log(error)
+}
+}
+
+
+export const getOtherUsers= async(req,res)=>{
+    try {
+         const loggedinUserId= req.id
+         const otherUsers=await  User.find({_id:{$ne:loggedinUserId}}).select("-password")
+         return res.status(200).json({
+            otherUsers
+         })
+
+    } catch (error) {
+        console.log(error)
+    }
 }
