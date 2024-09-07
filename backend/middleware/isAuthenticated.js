@@ -10,7 +10,7 @@ try {
         })
      }
      const decode=await jwt.verify(token, process.env.JWT_SECRET_KEY)
-     console.log(decode)
+    //  console.log(decode)
      if(!decode){
         return res.status(401).json({
             message:"Invalid token"
