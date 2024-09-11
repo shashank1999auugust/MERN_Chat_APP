@@ -1,5 +1,6 @@
 import React from "react";
 import OtherUser from "./OtherUser";
+import '../index.css'
 
 
 const OtherUsers = () => {

@@ -1,16 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
   background: url(../public/bg.avif);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-
-
-
+  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -21,4 +17,52 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+/* //the below css is not working due tosome global css applied through webpack so i installed npm install tailwind-scrollbar to customize css
+for scrollbar check messages component for more details */
+
+
+/* ::-webkit-scrollbar { */
+  /* Customize the scrollbar width */
+  /* width:6px;
+} */
+
+/* ::-webkit-scrollbar-track { */
+  /* Customize the scrollbar track */
+  /* background-color: aliceblue;
+} */
+
+/* ::-webkit-scrollbar-thumb { */
+  /* Customize the scrollbar thumb */
+  /* background: #1b1b1b;
+  border-radius: 10px;
+} */
+
+
+/* // i changed scrollbar-color this property was coming globally , i set it to initial now we can modify our scrollbar
+ now messages component is still using tailwind-scrollbar , and the otherusers are using  the below properties of scrollbar   */
+*{
+  scrollbar-color: initial;
+}
+*:hover {
+  scrollbar-color: initial;
+}
+
+::-webkit-scrollbar {
+  /* Customize the scrollbar width */
+  width:6px;
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+  background-color: aliceblue;
+}
+
+::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
+  background: #1b1b1b;
+  border-radius: 10px;
 }
