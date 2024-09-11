@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const OtherUsers = () => {
   useGetOtherUsers()
   const {otherUsers} =useSelector(store=>store.user)
-  console.log(otherUsers)
+  // console.log(otherUsers)
   //early return in react
   if(!otherUsers){
     return

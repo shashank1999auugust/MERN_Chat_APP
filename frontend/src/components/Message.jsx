@@ -2,7 +2,7 @@ import React from "react";
 
 
 //used chat bubble from daisyui
-const Message = () => {
+const Message = ({message}) => {
   return (
     <div className="chat chat-end">
       <div className="chat-image avatar">
@@ -16,7 +16,7 @@ const Message = () => {
       <div className="chat-header">
         <time className="text-xs opacity-50 text-white">12:45</time>
       </div>
-      <div className="chat-bubble">You were the Chosen One!</div>
+      <div className="chat-bubble">{message?.message}</div>
     </div>
   );
 };
