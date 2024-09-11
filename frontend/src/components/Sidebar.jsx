@@ -3,7 +3,7 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import OtherUsers from './OtherUsers';
 const Sidebar = () => {
   return (
-    <div className='borderd-r border-slate-500 p-4 flex flex-col'>
+    <div className='border-r border-slate-500 p-4 flex flex-col'>
      <form className='flex items-center gap-2'>
         <input className='input input-bordered rounded-md' type='text' placeholder='Search...'/>
         <button type="submit" className='btn  bg-zinc-700 text-white'>
