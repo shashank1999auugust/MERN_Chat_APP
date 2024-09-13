@@ -31,7 +31,7 @@ export const sendMessage= async(req,res)=>{
 
         //SOCKET.IO later
         return res.status(201).json({
-            message:"Message sent successfully"
+           newMessage
         })
         
     } catch (error) {
