@@ -18,11 +18,12 @@ const Login = () => {
       e.preventDefault()
     //   console.log(user)
     try {
+        axios.defaults.withCredentials=true
         const res= await  axios.post(`http://localhost:8080/api/v1/user/login`,user,{
             headers:{
                 'Content-Type':'application/json'
             },
-            withCredentials:true
+            // withCredentials:true
         })
         // console.log(res)
        
