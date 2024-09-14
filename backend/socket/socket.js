@@ -11,9 +11,26 @@ const io= new Server(server,{
         methods:['GET','POST']
     }
 })
+//for checking users online
+const userSocketMap={}; //{userid-> socketid}
 
 io.on('connection',(socket)=>{
     console.log('user connected', socket.id)
+    //in this we are receiving userid which is sent by frontend , app.js through query
+    const userId= socket.handshake.query.userId
+    if(userId!== undefined){
+          //storing user id and its corresponding socketid in usersocketmap
+          userSocketMap[userId]=socket.id
+    }
+   // sending  getOnline users to frontend
+    io.emit('getOnlineUsers', Object.keys(userSocketMap))
+
+    socket.on('disconnect',()=>{
+        console.log('user disconnected', socket.id)
+        delete userSocketMap[userId];
+        //sending again updated online users after disconnect
+        io.emit('getOnlineUsers', Object.keys(userSocketMap))
+    })
 })
 
 export {app, io, server}
